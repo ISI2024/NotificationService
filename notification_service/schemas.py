@@ -1,5 +1,6 @@
 from pydantic import BaseModel
-from enum import Enum, unique, auto
+from enum import Enum, unique
+from typing import Optional
 
 class NoValue(Enum):
 
@@ -18,23 +19,6 @@ class EmailActorMessage(BaseModel):
 
 
 # -----
-
-from dataclasses import dataclass
-from dataclasses_json import dataclass_json
-from enum import Enum, unique, auto
-from typing import Optional
-import datetime
-from pydantic import BaseModel
-
-# -----
-
-
-class NoValue(Enum):
-
-    def __repr__(self):
-        return '<%s.%s>' % (self.__class__.__name__, self.name)
-
-
 # -----
 
 
