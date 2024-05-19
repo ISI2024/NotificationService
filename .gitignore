@@ -1,0 +1,10 @@
+*/__pycache__
+*/*/__pycache__
+*/*/*/__pycache__
+./logs/*
+untracked
+files
+.vscode
+.pytest_cache
+config.yaml
+logs/*
