@@ -1,0 +1,3 @@
+[submodule "notification_service/common"]
+	path = notification_service/common
+	url = https://github.com/ISI2024/commons.git

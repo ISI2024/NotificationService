@@ -2,7 +2,9 @@ import pykka
 from confluent_kafka import Consumer, KafkaError, KafkaException
 from config import Config
 from email_actor import EmailSenderActor
-from schemas import Templates, EmailActorMessage, UsersEvent, UsersEventType, TestsEvent, TestsEventType
+from schemas import Templates, EmailActorMessage
+from common.users import UsersEvent, UsersEventType
+from common.tests import TestsEvent, TestsEventType
 from logging import log, INFO, ERROR, DEBUG
 import json
 

@@ -4,7 +4,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from jinja2 import Environment, FileSystemLoader
 from config import Config
-from schemas import Templates, EmailActorMessage
+from schemas import EmailActorMessage
 from logging import info, error
 
 config = Config()
