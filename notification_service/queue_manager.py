@@ -42,10 +42,15 @@ class KafkaConsumerActor(pykka.ThreadingActor):
                         log(ERROR, msg.error())
                         raise KafkaException(msg.error())
 
-                if msg.topic() == "users":
-                    self.on_users_message(message=msg.value().decode("utf-8"))
-                else:
-                    self.on_tests_message(message=msg.value().decode("utf-8"))
+                match msg.topic():
+                    case "users":
+                        self.on_users_message(message=msg.value().decode("utf-8"))
+                    
+                    case "tests":
+                        self.on_tests_message(message=msg.value().decode("utf-8"))
+
+                    case _:
+                        log(DEBUG, f"Unsupported topic: {msg.topic()}")
 
         except Exception as e:
             log(ERROR, f'Error during event consumption: {e}')
