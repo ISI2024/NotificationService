@@ -11,16 +11,10 @@ import json
 
 config = Config()
 
-kafka_conf_consumer = {
-    'bootstrap.servers': config.kafka_host,
-    'group.id': 'notifications',
-    'auto.offset.reset': 'latest'
-}
-
 class KafkaConsumerActor(pykka.ThreadingActor):
     def __init__(self):
         super().__init__()
-        self.consumer = Consumer(kafka_conf_consumer)
+        self.consumer = Consumer(config.kafka_config)
         self.topics = config.topics
         self.email_actor = EmailSenderActor.start()
         self.running = True

@@ -23,7 +23,16 @@ class Config:
             with open("config.yaml", "r") as f:
                 config = yaml.load(f, Loader=yaml.FullLoader)
 
-                self.kafka_host = config['kafka']['host']
+                self.kafka_config = {
+                    'bootstrap.servers': config['kafka']['host'],
+                    'group.id': 'notifications',
+                    'auto.offset.reset': 'latest',
+                    'security.protocol': 'SASL_PLAINTEXT',
+                    'sasl.mechanisms': 'PLAIN',
+                    'sasl.username': config['kafka']['user'],
+                    'sasl.password': config['kafka']['password']
+                }
+                
                 self.topics = config['kafka']['topics']
 
                 self.email = Gmail(address=config['email']['sender'],
