@@ -26,7 +26,8 @@ class Config:
                 self.kafka_config = {
                     'bootstrap.servers': config['kafka']['host'],
                     'group.id': 'notifications',
-                    'auto.offset.reset': 'latest',
+                    'auto.offset.reset': 'earliest',
+                    'enable.auto.commit': False,
                     'security.protocol': 'SASL_PLAINTEXT',
                     'sasl.mechanisms': 'PLAIN',
                     'sasl.username': config['kafka']['user'],

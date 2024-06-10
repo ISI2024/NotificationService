@@ -46,6 +46,8 @@ class KafkaConsumerActor(pykka.ThreadingActor):
                     case _:
                         log(DEBUG, f"Unsupported topic: {msg.topic()}")
 
+                self.consumer.commit()
+                
         except Exception as e:
             log(ERROR, f'Error during event consumption: {e}')
 
